@@ -5,6 +5,7 @@ from tiktoken import model
 
 load_dotenv()
 
+from langchain_groq import ChatGroq
 from langchain_mistralai import ChatMistralAI
 from langchain.tools import tool
 from langchain_core.messages import HumanMessage, ToolMessage
@@ -17,7 +18,10 @@ from langchain_core.output_parsers import StrOutputParser
 from tools import get_web_content, scrape_website_url
 
 #model setup
-llm = ChatMistralAI(model="mistral-small-latest", temperature=0)
+# llm = ChatMistralAI(model="mistral-small-latest", temperature=0)
+llm = ChatGroq(model="openai/gpt-oss-120b", temperature=0)
+
+
 
 # web_search_tool 
 def build_search_agent():
